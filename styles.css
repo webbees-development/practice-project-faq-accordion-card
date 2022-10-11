@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+/* reset basic styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* variables */
+:root {
+    --clr-text-primary: hsl(238, 29%, 16%);
+    --clr-text-1: hsl(237, 12%, 33%);
+    --clr-text-2: hsl(240, 6%, 50%);
+    --clr-divider: hsl(240, 5%, 91%);
+    --clr-accent: hsl(14, 88%, 65%);
+
+    --clr-bg-1: hsl(273, 75%, 66%);
+    --clr-bg-2: hsl(240, 73%, 65%);
+
+
+    --clr-white: hsl(0, 0%, 100%);
+}
+
+/* styles */
+body {
+    font-size: 12px;
+
+    background: linear-gradient(180deg, var(--clr-bg-1) 0%, var(--clr-bg-2) 100%);
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+details {
+    border-bottom: solid 1px var(--clr-divider);
+    padding-block-end: 1rem;
+}
+
+details + details {
+    margin-block-start: 1rem;
+}
+
+details[open] > summary {
+    color: var(--clr-text-1);
+    font-weight: 700;
+}
+
+details[open] > summary::after {
+    transform: rotate(180deg);
+}
+
+details > p {
+    margin-block-start: 0.75rem;
+    margin-inline-end: 1rem;
+
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    color: var(--clr-text-2);
+}
+
+h1 {
+    text-align: center;
+
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+
+    color: var(--clr-text-primary);
+
+    margin-block-end: 2rem;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+main {
+    width: 100%;
+    margin: 1.5rem;
+    margin-top: 9rem;
+}
+
+summary {
+    list-style: none;
+
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+
+    color: var(--clr-text-1);
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+summary:hover,
+summary:focus-visible {
+    color: var(--clr-accent);
+}
+
+summary:focus-visible {
+    outline: none;
+}
+
+summary::after {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 2px;
+
+    content: "";
+    width: 1em;
+    aspect-ratio: 1;
+
+    background-image: url("./images/icon-arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+    transition: 250ms transform;
+}
+
+.box-img {
+    display: none;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--clr-white);
+    padding-top: 0;
+    border-radius: 1.5rem;
+
+    position: relative;
+
+    max-width: 25rem;
+    margin-inline: auto;
+}
+
+.card-body {
+    margin-inline: 1.5rem;
+    margin-block-end: 3rem;
+}
+
+.image-container {
+    position: relative;
+
+    background-image: url("./images/bg-pattern-mobile.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+
+    min-height: 6.5rem;
+    margin-block-end: 1.5rem;
+}
+
+.image-container > picture {
+    --item-width: 15rem;
+    position: absolute;
+    left: calc(50% - var(--item-width) / 2);
+    top: calc(0.8rem - var(--item-width) / 2);
+    width: var(--item-width);
+}
+
+@media (min-width: 62.5rem) {
+    h1 {
+        text-align: left;
+
+        margin-block-end: 2.5rem;
+    }
+
+    main {
+        margin-inline-start: 4rem;
+        margin-inline-end: 2rem;
+    }
+
+    .box-img {
+        --item-width: 12rem;
+
+        display: block;
+        position: absolute;
+        left: calc(2px + var(--item-width) / -2);
+        top: 39%;
+
+        width: var(--item-width);
+
+        z-index: 1;
+    }
+
+    .card {
+        max-width: 59rem;
+        min-height: 31rem;
+
+        flex-direction: row;
+    }
+
+    .card > div {
+        flex-basis: 50%;
+    }
+
+    .card-body {
+        margin: 0;
+        padding: 4rem 6rem 4rem 0;
+    }
+
+    .image-container {
+        overflow: hidden;
+
+        background-image: url("./images/bg-pattern-desktop.svg");
+        background-repeat: no-repeat;
+        background-position: 118% 65%;
+        background-size: 200%;
+
+        margin-block-end: 0;
+    }
+    
+    .image-container > picture {
+        --item-width: 29rem;
+        position: absolute;
+        top: 0;
+        left: -18%;
+        /* width: var(--item-width); */
+        width: 100%;
+
+        height: 100%;
+    }
+
+    .image-container > picture > img {
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+}
